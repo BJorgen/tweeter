@@ -13,11 +13,10 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <!-- Nav Bar CSS -->
+    <!-- Subsection CSS -->
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-
-    <!-- New Tweet CSS -->
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -49,6 +48,23 @@
           <span class="counter">140</span>
         </form>
       </section>
+
+    <!-- Page-specific (main) content here -->
+      <div id="tweet-container">
+        <article class="tweet">
+          <header>
+            <img class ="tweet__avatar" src="/images/placeholder-avatar.png" alt="/images/placeholder-avatar.png">
+            <h2 class ="tweet__name">Donald Trump</h2>
+            <span class="tweet__handle">@shittyPerson</span>
+          </header>
+          <div class="tweet__content">
+              Reason I canceled my trip to London is that I am not a big fan of the Obama Administration having sold perhaps the best located and finest embassy in London for "peanuts," only to build a new one in an off location for 1.2 billion dollars. Bad deal. Wanted me to cut ribbon-NO! 
+          </div>
+          <footer>
+            <span class="tweet__age">10 days ago</span>
+          </footer>
+        </article>
+      </div>
 
     </main>
 
