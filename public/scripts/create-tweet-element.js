@@ -55,11 +55,11 @@ function ageInDays(timeStamp) {
 
 
 function createTweetElement(tweetData){
-    let $tweet = $("<article>").addClass("tweet");
+    const $tweet = $("<article>").addClass("tweet");
 
-    let $header = $("<header>")
-    let $content = $("<div>").addClass("tweet__content").html(tweetData.content.text)
-    let $footer = $("<footer>")
+    const $header = $("<header>")
+    const $content = $("<div>").addClass("tweet__content").html(tweetData.content.text)
+    const $footer = $("<footer>")
 
     let $avatar = $("<img>").addClass("tweet__avatar").attr('src', tweetData.user.avatars.regular)
     let $name = $("<h2>").addClass("tweet__name").html(tweetData.user.name)
