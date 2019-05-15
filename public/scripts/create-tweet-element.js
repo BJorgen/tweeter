@@ -47,6 +47,12 @@ const data = [
   ];
 
 // --- Functions ---
+function ageInDays(timeStamp) {
+    const nowTimeStamp = new Date().getTime();
+    const daysNum = (nowTimeStamp - timeStamp)/(24*60*60*1000);
+    return Math.round(daysNum);
+}
+
 function createTweetElement(tweetData){
     let $tweet = $("<article>").addClass("tweet");
 
@@ -63,12 +69,7 @@ function createTweetElement(tweetData){
         .append($name)
         .append($handle)
 
-    //let age = Date() - Date(tweetData.created_at*1000)
-    //let time = (Date.getTime()/1000 - tweetData.created_at)/(24*60*60)
-    //let age = new Date(tweetData.created_at)
-    let age = 10;
-    let ageString = `${age} days ago`
-    let $age = $("<span>").addClass("tweet__age").html(ageString)
+    let $age = $("<span>").addClass("tweet__age").html(`${ageInDays(tweetData.created_at)} days ago`)
     
     $footer.append($age)
 
@@ -87,27 +88,5 @@ function renderTweets(tweets) {
     })
 }
 
-// Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = {
-    "user": {
-        "name": "Newton",
-        "avatars": {
-            "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-            "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-            "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        "handle": "@SirIsaac"
-    },
-    "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-}
-
-var $tweet = createTweetElement(tweetData);
-    
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$('#tweets-container').append($tweet);
 
 renderTweets(data);

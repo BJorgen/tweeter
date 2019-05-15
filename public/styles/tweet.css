@@ -48,7 +48,7 @@ article.tweet:hover .tweet__name {
 }
 
 .tweet__handle {
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
     margin-left: auto;
     align-self: flex-start;
 }
