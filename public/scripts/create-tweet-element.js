@@ -53,6 +53,7 @@ function ageInDays(timeStamp) {
     return Math.round(daysNum);
 }
 
+
 function createTweetElement(tweetData){
     let $tweet = $("<article>").addClass("tweet");
 
@@ -90,12 +91,11 @@ function createTweetElement(tweetData){
     return $tweet
 }
 
+
 function renderTweets(tweets) {
-    tweets.forEach(tweet =>{
+    tweets.forEach(tweet => {
         var $tweet = createTweetElement(tweet);
         $('#tweets-container').append($tweet); 
     })
 }
 
-
-renderTweets(data);
