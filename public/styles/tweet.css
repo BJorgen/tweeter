@@ -48,7 +48,6 @@ article.tweet:hover .tweet__name {
 }
 
 .tweet__handle {
-    /* justify-self: flex-end; */
     margin-left: auto;
     align-self: flex-start;
 }
@@ -63,8 +62,18 @@ article.tweet:hover .tweet__name {
 
 article.tweet footer {
     padding: 10px;
+    display: flex;
 }
 
 .tweet__age {
     font-size: 80%;
+}
+
+article.tweet .tweet__actions {
+    margin-left: auto;
+    opacity : 0;
+}
+
+article.tweet:hover .tweet__actions {
+    opacity : 1;
 }

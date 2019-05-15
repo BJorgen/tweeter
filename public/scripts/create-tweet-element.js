@@ -71,7 +71,16 @@ function createTweetElement(tweetData){
 
     let $age = $("<span>").addClass("tweet__age").html(`${ageInDays(tweetData.created_at)} days ago`)
     
-    $footer.append($age)
+    const $tweetActions = `
+        <div class="tweet__actions">
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-heart"></i>
+        </div>`
+
+    $footer
+        .append($age)
+        .append($tweetActions)
 
     $tweet
         .append($header)
