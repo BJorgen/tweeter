@@ -13,7 +13,10 @@ $(function() {
                     data: formContent,
                     url: '/tweets',
                     method: 'POST',
-                    success: () => $textArea.val("")
+                    success: () => {
+                        $textArea.val("");
+                        loadTweets();
+                    }
                 });
             }
         } else {
