@@ -4,12 +4,17 @@ $(function() {
         event.preventDefault();
         const formContent = $(this).serialize();
         const $textArea = $(this).children('textarea');
-        const $counter = $(this).children('.counter')
+        const $counter = $(this).find('.counter');
         const tweet = $textArea.val();
         const maxTweetLength = 140;
+
+        $(".new-tweet--error").text('');
+        $textArea.removeClass("invalid");
+
         if (tweet) {
             if(tweet.length > maxTweetLength) {
-                alert('Edit yourself! Too much Tweet!')
+                $(".new-tweet--error").text('Edit yourself! Too much Tweet!');
+                $textArea.addClass("invalid");
             } else {
                 $.ajax({
                     data: formContent,
@@ -18,12 +23,13 @@ $(function() {
                     success: () => {
                         $textArea.val("");
                         loadTweets();
-                        $counter.text(140);
+                        $counter.text(maxTweetLength);
                     }
                 });
             }
         } else {
-            alert("You can't tweet NOTHING!!")
+            $(".new-tweet--error").text('You cannot tweet NOTHING!!')
+            $textArea.addClass("invalid");
         }
     });
 });

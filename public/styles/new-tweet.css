@@ -18,14 +18,35 @@ section.new-tweet {
     width: 100%
 }
 
-.new-tweet submit {
+.new-tweet textarea.invalid {
+    background-color: fade(#c51244, 20%);
+    border-color: #c51244;
+    border-width: 2px;
+}
+
+.new-tweet input{
     float: left;
 }
 
+.new-tweet__footer {
+    display: flex;
+    align-content: center;
+    width: 100%;
+    justify-content: space-between;
+} 
+
+.new-tweet--error {
+    justify-self:center;
+    color: #c51244;
+    font-weight: bold;
+
+}
+
 .new-tweet .counter {
-    float: right;
+    /* float: right; */
 }
 
 .newTweet .counter, .invalid {
-    color: red;
+    color: #c51244;
 }
+
