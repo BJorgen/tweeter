@@ -8,6 +8,8 @@
     z-index: 1000;
     background-color: #00a087;
     color: #e8fdff;
+    display: flex;
+    align-items: center;
 }
 
 #nav-bar .logo {
@@ -21,4 +23,20 @@
     line-height: 80px;
     margin-left: 10px;
     float: left;
+}
+
+#nav-bar .toggle-new-tweet {
+    margin-left: auto;
+    height: 60px;
+    border-radius: 8px;
+    border-color: black;
+    color:  #00a087;
+    font-size : 130%;
+    background-color:  #e8fdff;
+    
+}
+
+#nav-bar .toggle-new-tweet:hover {
+    color: black;
+    background-color: white;
 }

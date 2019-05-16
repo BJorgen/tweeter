@@ -16,5 +16,4 @@ function loadTweets(){
 
 $(document).ready(function() {
     loadTweets();
-    //renderTweets(data);
 });
