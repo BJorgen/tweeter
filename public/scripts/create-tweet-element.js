@@ -58,19 +58,19 @@ function createTweetElement(tweetData){
     const $tweet = $("<article>").addClass("tweet");
 
     const $header = $("<header>")
-    const $content = $("<div>").addClass("tweet__content").html(tweetData.content.text)
+    const $content = $("<div>").addClass("tweet__content").text(tweetData.content.text)
     const $footer = $("<footer>")
 
     let $avatar = $("<img>").addClass("tweet__avatar").attr('src', tweetData.user.avatars.regular)
-    let $name = $("<h2>").addClass("tweet__name").html(tweetData.user.name)
-    let $handle = $("<span>").addClass("tweet__handle").html(tweetData.user.handle)
+    let $name = $("<h2>").addClass("tweet__name").text(tweetData.user.name)
+    let $handle = $("<span>").addClass("tweet__handle").text(tweetData.user.handle)
     
     $header
         .append($avatar)
         .append($name)
         .append($handle)
 
-    let $age = $("<span>").addClass("tweet__age").html(`${ageInDays(tweetData.created_at)} days ago`)
+    let $age = $("<span>").addClass("tweet__age").text(`${ageInDays(tweetData.created_at)} days ago`)
     
     const $tweetActions = `
         <div class="tweet__actions">
