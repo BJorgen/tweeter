@@ -22,8 +22,8 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
         for (let tweet of tweets) {
             console.log(tweet);
         }
-
+        
     })
-
+    
     db.close();
 })
