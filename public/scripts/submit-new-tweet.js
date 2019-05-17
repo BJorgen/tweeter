@@ -1,5 +1,5 @@
 // ======================================================
-//          Submit New Tweet - Helper Function
+//    Submit New Tweet - Helper Function (Error Message)
 // ======================================================
 function showNewTweetError(message) {
     $textArea = $(".new-tweet textarea")
@@ -18,56 +18,46 @@ function showNewTweetError(message) {
     }
 }
 
-
 // ======================================================
-//         Submit New Tweet - Front End Handling
+//       Submit New Tweet - Front End Handling
 // ======================================================
-$(function() {
 
-    const $form = $('.new-tweet form');
-    $form.on('submit', function () {
-        event.preventDefault();
-        const formContent = $(this).serialize();
-        const $textArea = $(this).children('textarea');
-        const $counter = $(this).find('.counter');
-        const tweet = $textArea.val();
-        
-        // Clear error using showNewTweetsError - input false
-        showNewTweetError(false);
-
-        if (!tweet) {
-            showNewTweetError('You cannot tweet NOTHING!!');
-        }
-        else if(tweet.length > maxTweetLength) {
-                showNewTweetError('Edit yourself! Too much Tweet!');
-        }
-        else {
-            $.ajax({
-                data: formContent,
-                url: '/tweets',
-                method: 'POST',
-                success: (res) => {
-                    $textArea.val("");
-                    console.log(res);
-                    renderTweets([res]);
-                    $counter.text(maxTweetLength);
-                }
-            });
-        }
-    });
-});
-
-
+function submitNewTweet(event) {
+    event.preventDefault();
+    const formContent = $(this).serialize();
+    const $textArea = $(this).children('textarea');
+    const $counter = $(this).find('.counter');
+    const tweet = $textArea.val();
+    
+    // Clear error using showNewTweetsError - input false
+    showNewTweetError(false);
+    
+    if (!tweet) {
+        showNewTweetError('You cannot tweet NOTHING!!');
+    }
+    else if(tweet.length > maxTweetLength) {
+        showNewTweetError('Edit yourself! Too much Tweet!');
+    }
+    else {
+        $.ajax({
+            data: formContent,
+            url: '/tweets',
+            method: 'POST',
+            success: (res) => {
+                $textArea.val("");
+                renderTweets([res]);
+                $counter.text(maxTweetLength);
+            }
+        });
+    }
+}
 
 // ======================================================
 //         Submit New Tweet - Toggle Form
 // ======================================================
-$(function() {
-    $('.toggle-new-tweet').on('click', function () {
-        $newTweet = $("section.new-tweet")
-        $newTweet.slideToggle("fast")
-        $newTweet.find("textarea").focus();
-    });
-});
 
-
+function toggleSubmitForm() {
+    $newTweet = $("section.new-tweet");
+    $newTweet.slideToggle("fast");
+    $newTweet.find("textarea").focus();
+}
