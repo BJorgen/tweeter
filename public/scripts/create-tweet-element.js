@@ -9,6 +9,27 @@ function ageInDays(timeStamp) {
 }
 
 
+function ageOfTweet(timeStamp) {
+    const nowTimeStamp = new Date().getTime();
+    const timeDiffSeconds = (nowTimeStamp - timeStamp)/1000
+    const daysNum = Math.floor((timeDiffSeconds)/(24*60*60));
+    if(daysNum > 0){
+        return `${daysNum} days ago`
+    }
+    else {
+        const HoursNum = Math.floor((timeDiffSeconds)/(60*60));
+        if (HoursNum > 0){
+            return `${HoursNum} hours ago`
+        }
+        else {
+            const MinsNum = Math.floor((timeDiffSeconds)/(60));
+            if (MinsNum > 0){
+                return `${MinsNum} minutes ago`
+            }
+        }
+    }
+}
+
 // ======================================================
 //                Create Tweet Element
 // ======================================================
@@ -29,7 +50,10 @@ function createTweetElement(tweetData){
         .append($name)
         .append($handle)
 
-    let $age = $("<span>").addClass("tweet__age").text(`${ageInDays(tweetData.created_at)} days ago`)
+    // ---- Can optionally show age of Tweet in just days (ageInDays) or days, hours, min (ageOfTweet) ---
+
+    // let $age = $("<span>").addClass("tweet__age").text(`${ageInDays(tweetData.created_at)} days ago`)
+    let $age = $("<span>").addClass("tweet__age").text(ageOfTweet(tweetData.created_at))
     
     const $tweetActions = `
         <div class="tweet__actions">
