@@ -46,9 +46,10 @@ $(function() {
                 data: formContent,
                 url: '/tweets',
                 method: 'POST',
-                success: () => {
+                success: (res) => {
                     $textArea.val("");
-                    loadTweets();
+                    console.log(res);
+                    renderTweets([res]);
                     $counter.text(maxTweetLength);
                 }
             });
