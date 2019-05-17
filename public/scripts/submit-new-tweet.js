@@ -11,25 +11,27 @@ $(function() {
         $(".new-tweet--error").text('');
         $textArea.removeClass("invalid");
 
-        if (tweet) {
-            if(tweet.length > maxTweetLength) {
-                $(".new-tweet--error").text('Edit yourself! Too much Tweet!');
-                $textArea.addClass("invalid");
-            } else {
-                $.ajax({
-                    data: formContent,
-                    url: '/tweets',
-                    method: 'POST',
-                    success: () => {
-                        $textArea.val("");
-                        loadTweets();
-                        $counter.text(maxTweetLength);
-                    }
-                });
-            }
-        } else {
+        if (!tweet) {
+
             $(".new-tweet--error").text('You cannot tweet NOTHING!!')
             $textArea.addClass("invalid");
+
+        } else if(tweet.length > maxTweetLength) {
+
+                $(".new-tweet--error").text('Edit yourself! Too much Tweet!');
+                $textArea.addClass("invalid");
+
+        } else {
+            $.ajax({
+                data: formContent,
+                url: '/tweets',
+                method: 'POST',
+                success: () => {
+                    $textArea.val("");
+                    loadTweets();
+                    $counter.text(maxTweetLength);
+                }
+            });
         }
     });
 });
