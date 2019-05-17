@@ -19,9 +19,9 @@ section.new-tweet {
 }
 
 .new-tweet textarea.invalid {
-    background-color: fade(#c51244, 20%);
-    border-color: #c51244;
-    border-width: 2px;
+    /* background-color: #f8d7da; */
+    border-color: #f5c6cb;;
+    border-width: 1px;
 }
 
 .new-tweet input{
@@ -37,8 +37,14 @@ section.new-tweet {
 
 .new-tweet--error {
     justify-self:center;
-    color: #c51244;
-    font-weight: bold;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    border-width: 2px;
+    border-radius: 8px;
+    font-size: 80%;
+    border-style: solid;
+    padding: 2px 10px 0px 10px;
 
 }
 
@@ -46,7 +52,7 @@ section.new-tweet {
     /* float: right; */
 }
 
-.newTweet .counter, .invalid {
+.new-tweet .counter.invalid {
     color: #c51244;
 }
 
