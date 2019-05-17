@@ -11,14 +11,19 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
     console.log(`Connected to mongodb: ${MONGODB_URI}`);
 
 
-    db.collection("tweets").find({}, (err, result) => {
-        if (err) throw err;
+    function getTweets(callback) {
+        db.collection("tweets").find().toArray(callback);
+    }
 
-        console.log("find result: ", result);
-        console.log("type of find result: ", typeof result);
+    getTweets((err,tweets) => {
+        if(err) throw err;
 
-    });
+        console.log("logging each tweet:");
+        for (let tweet of tweets) {
+            console.log(tweet);
+        }
 
+    })
 
     db.close();
 })
