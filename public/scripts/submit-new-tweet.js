@@ -2,8 +2,8 @@
 //    Submit New Tweet - Helper Function (Error Message)
 // ======================================================
 function showNewTweetError(message) {
-    $textArea = $(".new-tweet textarea")
-    $newTweetError = $('.new-tweet--error')
+    $textArea = $(".new-tweet textarea");
+    $newTweetError = $('.new-tweet--error');
 
     if(!message){
         $newTweetError.slideUp();
