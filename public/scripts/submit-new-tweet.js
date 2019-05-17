@@ -1,5 +1,28 @@
+// ======================================================
+//          Submit New Tweet - Helper Function
+// ======================================================
+function showNewTweetError(message) {
+    $textArea = $(".new-tweet textarea")
+    $newTweetError = $('.new-tweet--error')
+
+    if(!message){
+        $newTweetError.slideUp();
+        $textArea.removeClass("invalid");
+    } else {
+        $newTweetError.slideUp("fast", () => {
+            $newTweetError.text(message);
+            $newTweetError.slideDown("fast");
+        })
+        $textArea.addClass("invalid");
+        $textArea.focus();
+    }
+}
+
+
+// ======================================================
+//         Submit New Tweet - Front End Handling
+// ======================================================
 $(function() {
-    $(".new-tweet--error").hide();
 
     const $form = $('.new-tweet form');
     $form.on('submit', function () {
@@ -8,18 +31,17 @@ $(function() {
         const $textArea = $(this).children('textarea');
         const $counter = $(this).find('.counter');
         const tweet = $textArea.val();
-        const maxTweetLength = 140;
-
-        $(".new-tweet--error").slideUp();
-        $textArea.removeClass("invalid");
+        
+        // Clear error using showNewTweetsError - input false
+        showNewTweetError(false);
 
         if (!tweet) {
             showNewTweetError('You cannot tweet NOTHING!!');
-
-        } else if(tweet.length > maxTweetLength) {
+        }
+        else if(tweet.length > maxTweetLength) {
                 showNewTweetError('Edit yourself! Too much Tweet!');
-
-        } else {
+        }
+        else {
             $.ajax({
                 data: formContent,
                 url: '/tweets',
@@ -36,7 +58,9 @@ $(function() {
 
 
 
-
+// ======================================================
+//         Submit New Tweet - Toggle Form
+// ======================================================
 $(function() {
     $('.toggle-new-tweet').on('click', function () {
         $newTweet = $("section.new-tweet")
@@ -46,14 +70,3 @@ $(function() {
 });
 
 
-
-function showNewTweetError(message) {
-    $newTweetError = $('.new-tweet--error')
-    $newTweetError.slideUp("fast", () => {
-        $newTweetError.text(message);
-        $newTweetError.slideDown("fast");
-    })
-    $textArea = $(".new-tweet textarea")
-    $textArea.addClass("invalid");
-    $textArea.focus();
-}

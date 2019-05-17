@@ -19,7 +19,6 @@ section.new-tweet {
 }
 
 .new-tweet textarea.invalid {
-    /* background-color: #f8d7da; */
     border-color: #f5c6cb;;
     border-width: 1px;
 }
@@ -48,9 +47,6 @@ section.new-tweet {
 
 }
 
-.new-tweet .counter {
-    /* float: right; */
-}
 
 .new-tweet .counter.invalid {
     color: #c51244;

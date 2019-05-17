@@ -1,10 +1,17 @@
-// --- Helper Functions ---
+// ======================================================
+//        Create Tweet Element - Helper Function
+// ======================================================
+
 function ageInDays(timeStamp) {
     const nowTimeStamp = new Date().getTime();
     const daysNum = (nowTimeStamp - timeStamp)/(24*60*60*1000);
     return Math.round(daysNum);
 }
 
+
+// ======================================================
+//                Create Tweet Element
+// ======================================================
 
 function createTweetElement(tweetData){
     const $tweet = $("<article>").addClass("tweet");
@@ -44,6 +51,10 @@ function createTweetElement(tweetData){
 }
 
 
+// ======================================================
+//                  Render Tweets
+// ======================================================
+
 function renderTweets(tweets) {
     tweets.forEach(tweet => {
         var $tweet = createTweetElement(tweet);
@@ -51,3 +62,16 @@ function renderTweets(tweets) {
     })
 }
 
+
+// ======================================================
+//                  Load Tweets
+// ======================================================
+
+function loadTweets(){
+    $.ajax({
+        method : 'GET',
+        url : '/tweets',
+        contentType : 'application/json',
+        success: (data) => renderTweets(data)
+    });
+}
